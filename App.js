@@ -1,19 +1,24 @@
 import ReactDom from 'react-dom';
 
-const App=()=>{
-    return(
-        <>
-         <h1>
-            React Working with parcel
+//React Element
+const Title=()=>(
+    <h1 className='head'>
+        Namaste React using JSX🚀
+    </h1>
+);
+
+
+//React Functional Component -  returns JSX
+const HeadingComponent=()=>{
+    return ( 
+    <div>
+        <Title></Title> 
+        <h1>
+            Namaste React Functional Component
         </h1>
-        <h2>
-            
-            added another linessss
-        </h2>
         
-        </>
-       
+        </div>    
     )
 }
 
-ReactDom.render(<App/>,document.getElementById('root'));
+ReactDom.render(<HeadingComponent/>,document.getElementById('root'));
