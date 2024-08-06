@@ -6,6 +6,10 @@ const App=()=>{
          <h1>
             React Working with parcel
         </h1>
+        <h2>
+            
+            added another linessss
+        </h2>
         
         </>
        
