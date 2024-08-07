@@ -1,4 +1,4 @@
-import ReactDom from 'react-dom';
+import ReactDom from 'react-dom/client';
 import Body from './components/Body';
 import Header from './components/Header';
 
@@ -19,4 +19,5 @@ const AppLayout=()=>{
     )
 };
 
-ReactDom.render(<AppLayout/>,document.getElementById('root'));
+const root=ReactDom.createRoot(document.getElementById('root'))
+root.render(<AppLayout/>);
