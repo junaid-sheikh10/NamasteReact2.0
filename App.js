@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom';
 
 //React Element
-const Title=()=>(
+const Title=(
     <h1 className='head'>
         Namaste React using JSX🚀
     </h1>
@@ -12,7 +12,7 @@ const Title=()=>(
 const HeadingComponent=()=>{
     return ( 
     <div>
-        <Title></Title> 
+        <h2>{Title}</h2> 
         <h1>
             Namaste React Functional Component
         </h1>
