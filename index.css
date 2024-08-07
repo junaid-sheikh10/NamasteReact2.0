@@ -1,3 +1,36 @@
-.head{
-    color: red;
+.header {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    justify-content: space-between;
+    /* padding: 0 2rem 0 2rem; */
+}
+
+.nav-items ul{
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+
+.res-card{
+    border: 1px solid black;
+    width: 15rem;
+    height: 20rem;
+}
+
+.card-img{
+    width: 100%;
+}
+
+.body{
+    margin: 2rem;
+    justify-content: center;
+}
+
+.res-container{
+    justify-content: center;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
