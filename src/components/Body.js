@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { NETWORK_URL } from "../utils/constant";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body=()=>{
 
@@ -61,7 +62,7 @@ const Body=()=>{
                
                { filteredRestaurants.length===0 ?<h1>No results Found</h1> : 
                 filteredRestaurants.map((restaurant,index)=>{
-                    return <RestaurantCard  {...restaurant} key={restaurant.info.id}></RestaurantCard>
+                    return <Link to={"restaurant/"+restaurant.info.id}  key={restaurant.info.id} ><RestaurantCard  {...restaurant} ></RestaurantCard> </Link> 
                 })
                }
             </div>
