@@ -1,4 +1,5 @@
 import { LOGO_URL } from "../utils/constant";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
 const Header=()=>{
     return (
@@ -11,8 +12,8 @@ const Header=()=>{
             <div className='nav-items'>
                 <ul>
                     <li>Home</li>
-                    <li>About </li>
-                    <li>Cart</li>
+                    <li>About</li>
+                    <li>Contact</li>
                 </ul>
             </div>
         </div>
@@ -21,6 +22,9 @@ const Header=()=>{
 
     )
 };
+
+
+
 
 export default Header;
 
