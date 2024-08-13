@@ -15,8 +15,9 @@
 
 .res-card{
     border: 1px solid black;
-    width: 15rem;
-    height: 20rem;
+
+    width: 20rem;
+    
 }
 
 .card-img{
@@ -39,3 +40,6 @@
     
     cursor: pointer;
 }
+
+
+
