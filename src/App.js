@@ -2,19 +2,29 @@ import ReactDom from 'react-dom/client';
 import Body from './components/Body';
 import Header from './components/Header';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
-
-import About from './routes/About';
+import { lazy } from 'react';
+//import About from './routes/About';
 import Contact from './routes/Contact';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
 import Error from './components/Error';
+import useRestaurantCheck from './utils/useOnlineCheck';
+import { Suspense } from 'react';
 
+
+const Grocery = lazy(()=>import("./components/Grocery"));
+const About=lazy(()=>import("./routes/About"))
 
 
 
 
 const AppLayout=()=>{
+    
+    // const isOnline=useRestaurantCheck();
+    // if (isOnline===false){
+    //     return <h1> youre' Offline , check your internet</h1>
+    // }
     return( 
     <div>
      <Header></Header>
@@ -36,7 +46,7 @@ const appRouter=createBrowserRouter([
             },
             {
                 path:"/about",
-                element:<About></About>
+                element:<Suspense fallback={<h1>Loading...</h1>}><About></About></Suspense> 
             },
             {
                 path:"/contact",
@@ -45,6 +55,10 @@ const appRouter=createBrowserRouter([
             {
                 path:"/restaurant/:id",
                 element:<RestaurantMenu/>
+            },
+            {
+                path:"/grocery",
+                element:<Suspense fallback={<h1>Loading...</h1>} ><Grocery/></Suspense>
             }
         ]
     }
