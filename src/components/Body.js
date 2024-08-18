@@ -39,24 +39,31 @@ const Body=()=>{
 
     
     return ListOfRestaurant.length===0 ? <Shimmer></Shimmer> : (
-        <div className='body'>
+        <div className=' mt-3'>
+
+            <div className="flex gap-8   pl-12 py-2 ">
             <div>
-                <input type="text" value={searchTxt} onChange={(e)=>{
+                <input className="border border-black rounded-md " type="text" value={searchTxt} onChange={(e)=>{
                     console.log(e.target.value)
                     setSearchTxt(e.target.value);
                 }} />
-                <button onClick={()=>{
+
+                <button className="bg-green-200 rounded-md mx-4 py-1 px-4" 
+                onClick={()=>{
                     console.log("search Text "+searchTxt);
                     const data = ListOfRestaurant.filter(restaurant=>restaurant.info.name.toLowerCase().includes(searchTxt.toLowerCase() ))
                     console.log(data);
                     setFilteredRestaurants(data)
                     setSearchTxt("")
-                }} >search</button>
+                }}
+                 >
+                    Search
+                </button>
             </div>
 
 
-            <div className='filter'>
-                <button className="filter-btn" 
+            <div className=''>
+                <button className="text-md px-4 py-1 bg-slate-200 rounded-md" 
                 onClick={()=>{
                     console.log("CLICKED")
                     const fRes=ListOfRestaurant.filter((rest)=>{if(rest.info.avgRating>4.4){return rest}})
@@ -66,8 +73,10 @@ const Body=()=>{
 
                 }}>Top Rated Restaurants</button>
             </div>
+            </div>
+          
 
-            <div className='res-container'>
+            <div className='flex flex-wrap mx-2  justify-between'>
                
                { filteredRestaurants.length===0 ?<h1>No results Found</h1> : 
                 filteredRestaurants.map((restaurant,index)=>{

@@ -8,13 +8,15 @@ const Header=()=>{
 
     return (
         <>
-        <div className='header'> 
-            <div className='logo-container'>
+        <div className=" flex justify-between  pr-20  shadow-lg "> 
+            <div className=''>
             <img src={LOGO_URL} alt="" />
             </div>
             
-            <div className='nav-items'>
-                <ul>
+            <div className=" items-center flex" > 
+                        
+                
+                <ul className="flex gap-5 underline-offset-auto">
                     <li>Online Status:{isOnline? "✅":"🟥"}</li>
                     <li><Link to="/" >Home</Link> </li>
                     <li><Link to="/about" >About</Link></li>
@@ -22,6 +24,8 @@ const Header=()=>{
                     <li><Link to="/grocery">Grocery</Link></li>
 
                 </ul>
+                
+                
             </div>
         </div>
         
