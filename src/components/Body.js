@@ -1,10 +1,11 @@
 
 import { useState,useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard ,{withPromotedLabel} from "./RestaurantCard";
 import { NETWORK_URL } from "../utils/constant";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineCheck from "../utils/useOnlineCheck";
+
 
 const Body=()=>{
 
@@ -14,6 +15,7 @@ const Body=()=>{
     const [searchTxt,setSearchTxt]=useState("");
     
     //Normal JS variable    
+  //  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     useEffect(()=>{
         //console.log("useEffect running ")
@@ -25,17 +27,11 @@ const Body=()=>{
         const json= await data.json();
         console.log("getRestaurants func Running");
        // console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
-        setListOfRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        setFilteredRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
  
-//     const isOnline = useOnlineCheck();
-//   //  console.log("isOnline in Body="+isOnline)
-
-
-//     if(isOnline===false){
-//         return <h2>No Network Connection ! Please check your Internet connection</h2>
-//     }
+    console.log(filteredRestaurants)
 
     
     return ListOfRestaurant.length===0 ? <Shimmer></Shimmer> : (
@@ -51,7 +47,7 @@ const Body=()=>{
                 <button className="bg-green-200 rounded-md mx-4 py-1 px-4" 
                 onClick={()=>{
                     console.log("search Text "+searchTxt);
-                    const data = ListOfRestaurant.filter(restaurant=>restaurant.info.name.toLowerCase().includes(searchTxt.toLowerCase() ))
+                    const data = ListOfRestaurant.filter(restaurant=>restaurant?.info?.name?.toLowerCase().includes(searchTxt.toLowerCase() ))
                     console.log(data);
                     setFilteredRestaurants(data)
                     setSearchTxt("")
@@ -66,7 +62,7 @@ const Body=()=>{
                 <button className="text-md px-4 py-1 bg-slate-200 rounded-md" 
                 onClick={()=>{
                     console.log("CLICKED")
-                    const fRes=ListOfRestaurant.filter((rest)=>{if(rest.info.avgRating>4.4){return rest}})
+                    const fRes=ListOfRestaurant.filter((rest)=>{if(rest?.info?.avgRating>4.4){return rest}})
                     console.log(fRes)
                     setFilteredRestaurants(fRes)
 
@@ -80,7 +76,12 @@ const Body=()=>{
                
                { filteredRestaurants.length===0 ?<h1>No results Found</h1> : 
                 filteredRestaurants.map((restaurant,index)=>{
-                    return <Link to={"restaurant/"+restaurant.info.id}  key={restaurant.info.id} ><RestaurantCard  {...restaurant} ></RestaurantCard> </Link> 
+                    return <Link to={"restaurant/"+restaurant.info.id}  key={restaurant.info.id} >
+                        {/* {if restaurant is promoted add promoted label} */
+                            restaurant?.promoted ? <RestaurantCardPromoted/> : <RestaurantCard  {...restaurant} ></RestaurantCard>
+                        }
+                        
+                         </Link> 
                 })
                }
             </div>
